@@ -2,7 +2,7 @@ import React, { useContext } from "react"
 import { LogOut } from "lucide-react"
 import UserContext from "../../../context.jsx"
 import { useDispatch } from "react-redux"
-import { getUserName } from "../../../store/UserSlice.js"
+import { setUserName, setUserRole } from "../../../store/UserSlice.js"
 
 const Logout = () => {
   const { setUsername } = useContext(UserContext)
@@ -10,7 +10,8 @@ const Logout = () => {
 
   const handleLogout = () => {
     setUsername("")
-    dispatch(getUserName(null))
+    dispatch(setUserName(null))
+    dispatch(setUserRole(null))
   };
 
   return (

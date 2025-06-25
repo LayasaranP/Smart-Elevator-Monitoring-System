@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { UserPlus, ChevronDown, Loader2 } from 'lucide-react'
 import { useForm } from 'react-hook-form' 
 import axios from 'axios'
-import { getUserName } from '../../../store/UserSlice.js'
+import { setUserName, setUserRole } from '../../../store/UserSlice.js'
 import { useDispatch } from 'react-redux'
 
 const Sign_Up = ({ onClose }) => {
@@ -20,7 +20,8 @@ const Sign_Up = ({ onClose }) => {
         data
       );
       const userData = response.data;
-      dispatch(getUserName(userData.user.name));
+      dispatch(setUserName(userData.user.name));
+      dispatch(setUserRole(userData.user.role));
       if (onClose) {
         onClose()
       }
@@ -50,6 +51,7 @@ const Sign_Up = ({ onClose }) => {
           placeholder="Enter your name" 
           disabled={isLoading}
           className='border border-slate-600 p-2 rounded-md disabled:opacity-50 disabled:cursor-not-allowed' 
+          required
         />
         <label>Email</label>
         <input 
@@ -58,6 +60,7 @@ const Sign_Up = ({ onClose }) => {
           {...register("email")} 
           disabled={isLoading}
           className='border border-slate-600 p-2 rounded-md disabled:opacity-50 disabled:cursor-not-allowed' 
+          required
         />
         <label>Password</label>
         <input 
@@ -66,6 +69,7 @@ const Sign_Up = ({ onClose }) => {
           {...register("password")} 
           disabled={isLoading}
           className='border border-slate-600 p-2 rounded-md disabled:opacity-50 disabled:cursor-not-allowed' 
+          required
         />
         <label>Role</label>
         <select 

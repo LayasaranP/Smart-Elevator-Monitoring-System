@@ -73,7 +73,7 @@ const ElevatorCard = ({ name, status, value, unit, id }) => {
   const Icon = getIcon(id);
 
   return (
-    <div className="bg-slate-700/50 p-4 rounded-xl shadow-md w-full max-w-md">
+    <div className="bg-slate-700/50 p-4 rounded-xl shadow-md w-full max-w-md transition-transform duration-200 hover:scale-105 hover:z-10 relative">
       <div className="flex justify-between">
         <div className="flex gap-2">
           <Icon className="text-green-400 w-5 h-5 mt-1" />

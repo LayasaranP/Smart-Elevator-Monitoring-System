@@ -3,10 +3,11 @@ import { useForm } from "react-hook-form"
 import { LogIn, Loader2 } from "lucide-react"
 import axios from "axios"
 import UserContext from '../../../context.jsx'
-import { getUserName } from "../../../store/UserSlice.js"
+import { setUserName, setUserRole } from "../../../store/UserSlice.js"
 import { useDispatch } from "react-redux"
 
 const LoginForm = ({ onClose }) => {
+
   const { setUsername } = useContext(UserContext)
   const dispatch = useDispatch()
   const [isLoading, setIsLoading] = useState(false)
@@ -28,8 +29,9 @@ const LoginForm = ({ onClose }) => {
       const userData = response.data
       const userName = userData.user.name
       setUsername(userName)
-      dispatch(getUserName(userName))
-      
+      dispatch(setUserName(userName))
+      dispatch(setUserRole(userData.user.role))
+
       if (onClose) {
         onClose()
       }
@@ -62,6 +64,7 @@ const LoginForm = ({ onClose }) => {
           {...register("email")}
           disabled={isLoading}
           className="bg-slate-700/50 text-white placeholder-slate-400 px-4 py-2 rounded-md border border-slate-600 focus:outline-none focus:ring-2 focus:ring-white-500 disabled:opacity-50 disabled:cursor-not-allowed"
+          required
         />
         <label htmlFor="password">Password</label>
         <input
@@ -70,6 +73,7 @@ const LoginForm = ({ onClose }) => {
           {...register("password")}
           disabled={isLoading}
           className="bg-slate-700/50 text-white placeholder-slate-400 px-4 py-2 rounded-md border border-slate-600 focus:outline-none focus:ring-2 focus:ring-white-500 disabled:opacity-50 disabled:cursor-not-allowed"
+          required
         />
         <button
           type="submit"

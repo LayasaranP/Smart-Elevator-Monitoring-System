@@ -10,7 +10,7 @@ const Equipment_Monitor_HomePage = () => {
   const { username } = useContext(UserContext)
 
   return (
-    <div className="border border-slate-700 bg-slate-800/50 mx-4 mt-2 mb-4 p-2 text-white rounded-2xl">
+    <div className="border border-slate-600 bg-slate-800/50 mx-4 mt-2 mb-4 p-2 text-white rounded-2xl">
       <div className="flex justify-between p-5">
         <div className="flex flex-col gap-1">
           <h1 className="text-2xl font-bold">Equipment Monitor</h1>

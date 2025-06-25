@@ -13,7 +13,7 @@ const Title = () => {
       setUserName(userNameFromRedux);
       const timer = setTimeout(() => {
         setUserName("");
-      }, 5000);
+      }, 4000);
       return () => clearTimeout(timer);
     }
   }, [userNameFromRedux]);
@@ -28,22 +28,22 @@ const Title = () => {
 
   return (
     <div>
-      <div className="grid grid-cols-2 gap-4 pt-8">
-        <div className="col-span-1 pl-18 text-4xl text-white">
+      <div className="title grid grid-cols-2 gap-4 pt-8">
+        <div className="smart col-span-1 pl-18 text-4xl text-white">
           {userName && <p>Welcome, {userName}! 👋</p>}
           <h1>Smart Elevator Control Center</h1>
         </div>
-        <div className="col-span-1 text-right pr-18">
+        <div className="system col-span-1 text-right pr-18">
           <button className="border rounded-full border-green-600 text-green-500 px-4 mt-4">
             System Online
           </button>
         </div>
-        <div className="col-span-1 pl-18 text-xl text-white">
+        <div className="real col-span-1 pl-18 text-xl text-white">
           <h3>
             Real-time monitoring • Cloud-integrated • AI-powered analytics
           </h3>
         </div>
-        <div className="col-span-1 text-right pr-25 text-white">
+        <div className="time col-span-1 text-right pr-25 text-white">
           <p>{timeMonitor}</p>
         </div>
       </div>
