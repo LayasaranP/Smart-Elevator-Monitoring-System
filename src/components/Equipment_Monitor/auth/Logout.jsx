@@ -9,6 +9,7 @@ const Logout = () => {
   const dispatch = useDispatch()
 
   const handleLogout = () => {
+    alert("are you sure to logout")
     setUsername("")
     dispatch(setUserName(null))
     dispatch(setUserRole(null))

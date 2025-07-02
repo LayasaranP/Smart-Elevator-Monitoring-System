@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from 'react';
 import {
   Search,
   Power,
@@ -112,6 +112,7 @@ const ElevatorCard = ({ name, status, value, unit, id }) => {
 };
 
 const Elevator_types = () => {
+  const [search, setSearch] = useState("");
   const [selectedType, setSelectedType] = useState("traction");
 
   const elv = {
@@ -302,6 +303,10 @@ const Elevator_types = () => {
     ],
   };
 
+  const filteredElevatorComponent = elv[selectedType].filter((component) =>
+    component.name.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
     <div className="p-6">
       <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-6">
@@ -310,6 +315,7 @@ const Elevator_types = () => {
           <input
             type="text"
             placeholder="Search components..."
+            onChange={(e) => setSearch(e.target.value)}
             className="bg-slate-600 text-white pl-10 pr-3 py-2 rounded-md"
           />
         </div>
@@ -328,9 +334,13 @@ const Elevator_types = () => {
       </div>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
-        {elv[selectedType].map((component) => (
-          <ElevatorCard key={component.id} {...component} />
-        ))}
+        {filteredElevatorComponent.length > 0 ? (
+          filteredElevatorComponent.map((component) => (
+            <ElevatorCard key={component.id} {...component} />
+          ))
+        ) : (
+          <p className="col-span-full text-center">Not Found</p>
+        )}
       </div>
     </div>
   );
