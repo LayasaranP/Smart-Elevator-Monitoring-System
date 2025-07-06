@@ -28,7 +28,7 @@ const Title = () => {
 
   return (
     <div>
-      <div className="title grid grid-cols-2 gap-4 pt-8">
+      <div className="title grid grid-cols-2 gap-4 pt-8 cursor-crosshair">
         <div className="smart col-span-1 pl-18 text-4xl text-white">
           {userName && <p>Welcome, {userName}! 👋</p>}
           <h1>Smart Elevator Control Center</h1>
