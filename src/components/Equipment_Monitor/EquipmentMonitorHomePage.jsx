@@ -3,7 +3,7 @@ import Auth from "./auth/Authentication.jsx"
 import { LogIn, User } from "lucide-react"
 import ELevator_types from "./ELevator_types.jsx"
 import UserContext from "../../context.jsx"
-import Logout from "./auth/LogOut.jsx"
+import Logout from "./auth/Logout.jsx"
 
 const Equipment_Monitor_HomePage = () => {
   const [showAuth, setShowAuth] = useState(false)
